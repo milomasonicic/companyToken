@@ -9,7 +9,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
             sm:justify-center sm:items-center min-h-screen 
             bg-dots-darker bg-center bg-red-300 
             dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-                <div className="sm:fixed sm:top-0 sm:right-0 p-6 text-end">
+                <div className="">
                     {auth.user ? (
                         <Link
                             href={route('dashboard')}
@@ -40,7 +40,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     )}
                 </div>
 
-                    <h1>Milo</h1>
+                   
          
             </div>
 
