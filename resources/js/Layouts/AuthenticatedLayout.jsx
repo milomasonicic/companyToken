@@ -4,7 +4,9 @@ import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link } from '@inertiajs/react';
-import DarkModeToggle from '../Components/DarkMode'; 
+import DarkModeToggle from '@/Components/DarkMode'; 
+
+
 
 export default function Authenticated({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
@@ -21,6 +23,7 @@ export default function Authenticated({ user, header, children }) {
                        
                             
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                         
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                     Dashboard
                                 </NavLink>
@@ -41,6 +44,7 @@ export default function Authenticated({ user, header, children }) {
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ms-6">
+                           
                             <div className="ms-3 relative">
                                 <Dropdown>
                                     <Dropdown.Trigger>
@@ -75,6 +79,7 @@ export default function Authenticated({ user, header, children }) {
                                     </Dropdown.Content>
                                 </Dropdown>
                             </div>
+                                <DarkModeToggle></DarkModeToggle>
                         </div>
 
                         <div className="-me-2 flex items-center sm:hidden">
@@ -104,6 +109,7 @@ export default function Authenticated({ user, header, children }) {
                 </div>
 
                 <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
+                <DarkModeToggle></DarkModeToggle>
                     <div className="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
                             Dashboard
@@ -116,6 +122,7 @@ export default function Authenticated({ user, header, children }) {
                         <ResponsiveNavLink href={route('invest.index')} active={route().current('invest.index')}>
                             Invest
                         </ResponsiveNavLink>
+
 
 
                     </div>
