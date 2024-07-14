@@ -44,19 +44,22 @@
   }
 
 
+/*log in gradient 
 
-/*
+background: radial-gradient(circle at 50% 50%, #de0a9b, #00d274, #1e293b, #374151);
+*/
+
 @layer utilities {
-    background: radial-gradient(circle at 50% 50%, #de0a9b, #00d274, #1e293b, #374151);
     .clip-irregular {
         clip-path: polygon(25% 0%, 100% 2%, 75% 90%, 0% 90%);
     }
 
     .bg-radial-irregular {
-        background: radial-gradient(circle 30% 30%,  #ff7e5f, #feb47b, #86a8e7, #91eae4 );
+        background:  linear-gradient(180deg, #c8d6d2, #91fdff, #ffffff,  #fff53d, #ffffff,  #e700db);
+        filter: blur(1px);
     }
 }
-    */
+  
 
 
 .switch {

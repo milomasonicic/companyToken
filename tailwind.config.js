@@ -16,6 +16,13 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+
+            backgroundImage: {
+                'login': "url('/public/loginpage.jpg')",
+                'darklogin': "url('/public/drakLogin.jpg')",
+              
+              },
+        
         },
     },
 
