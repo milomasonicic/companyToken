@@ -25,8 +25,8 @@ const DarkModeToggle = () => {
     //style
 
     return(
-        <div className='w-[100%]  bg-white dark:bg-gray-900'>
-        <div className="max-w-7xl mx-auto py-2  sm:px-6 lg:px-8 flex justify-end  bg-white dark:bg-gray-900">
+        <div className='w-[100%]  bg-zinc-50 dark:bg-gray-800 '>
+        <div className="max-w-7xl mx-auto py-2  sm:px-6 lg:px-8 flex justify-end  ">
                 <label onChange={toggleDarkMode} class="switch">
                      <input type="checkbox" />
                      <span class="slider round"></span>
