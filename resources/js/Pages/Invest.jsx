@@ -18,11 +18,37 @@ export default function Invest({ auth }) {
     const [state, setState] = useState({
         provider: null,
         signer: null,
-        //contract: null
+        contract: null
     })
 
     //payingfunction
-    const handleDeposit = () => {
+    async function handleDeposit() {
+        try{
+            const {contract} = state
+            const tx = await contract.deposit({
+                value: ethers.parseEther(deposit)
+            })
+
+        } catch(error) {
+            console.error("Error depositing:", error);
+        }
+
+    }
+
+
+    //storeTransaction
+    const postTransaction = async() => {
+
+        try{
+            const response = await axios.post('http://company.test/api/storeTransaction', {
+                walletAddress: walletAddress,
+                amount: deposit,
+                user_id: auth.user().id
+            })
+            
+        } catch(err) {
+            console.log(err.message)
+        }
 
     }
 
@@ -79,7 +105,7 @@ export default function Invest({ auth }) {
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="w-[90%] flex flex-col items-center  mx-auto bg-white border border-4 border-teal-400 dark:border-violet-500 
+                    <div className="w-[90%] flex flex-col items-center  mx-auto bg-white  
                     shadow-md
                     dark:bg-gray-600 overflow-hidden shadow-sm sm:rounded-lg h-[460px]">
                     <div className=' w-full h-[60%]'>
