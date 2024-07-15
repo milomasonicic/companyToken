@@ -6,7 +6,7 @@ import { ethers, formatUnits } from "ethers";
 import Balance from '@/Components/Balance'
 import Wallet from '@/Components/Wallet'
 import axios from 'axios';
-
+import Transactions from './Transactions';
 
 export default function Invest({ auth }) {
 
@@ -170,6 +170,9 @@ export default function Invest({ auth }) {
                                  onClick={handleDeposit}> Deposit
                             </button>  
                     </div>
+                    </div>
+                    <div className='mt-10'>
+                        <Transactions></Transactions>
                     </div>
                 </div>
             </div>

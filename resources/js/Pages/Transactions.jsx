@@ -19,17 +19,15 @@ export default function Transactions(){
     },[])
 
     return(
-        <div>
+        <div className="w-[90%] mx-auto">
 
-            <div>
-                <Transaction name={"milo"} amount={22} time={222} ></Transaction>
-            </div>
+           
             { state.length > 0 ? (
                     state.map((transaction) => (
                         <div key={transaction.id}>
                             <Transaction name={transaction.user.name}
                             amount={transaction.amount}
-                            time={transaction.created_at}
+                            time={transaction.formatted_created_at}
                             ></Transaction>
                         </div>
                     ))

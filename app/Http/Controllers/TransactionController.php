@@ -29,6 +29,18 @@ class TransactionController extends Controller
         ->orderBy('created_at', 'desc')
         ->get(); 
 
-        return response()->json($transactions);
+        $formattedTransactions = $transactions->map(function ($transaction) {
+            $createdAt = Carbon::parse($transaction->created_at);
+
+            // Primeri formata: "pre nekoliko minuta", "pre sat vremena", "10:30"
+            $formattedDate = $createdAt->format('H:i');
+
+            // Dodavanje formatiranog polja u objekat transakcije
+            $transaction->formatted_created_at = $formattedDate;
+
+            return $transaction;
+        });
+
+        return response()->json($formattedTransactions);
     }
 }
