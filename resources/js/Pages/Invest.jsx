@@ -1,25 +1,44 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
+import abi from "./contract/Invest.json"
 import { useState, useEffect, useRef, useTransition } from 'react';
 import { ethers, formatUnits } from "ethers";
 import Balance from '@/Components/Balance'
 import Wallet from '@/Components/Wallet'
+import axios from 'axios';
 
 export default function Invest({ auth }) {
 
     const [connected, setConnected] = useState(false)
 
     const [deposit, setDeposit] = useState()
-
+    
     const [walletAddress, setWalletAdress] = useState("")
     const [balance, setBalance] = useState("")
     const balanceRef = useRef("")
-
+    
     const [state, setState] = useState({
         provider: null,
         signer: null,
         contract: null
     })
+
+    //storeTransaction
+    const postTransaction = async() => {
+
+        try{
+            const response = await axios.post('http://company.test/api/storeTransaction', {
+                walletAddress: "kfkf",
+                amount: 11,
+                user_id: 1
+            })
+            
+            console.log(response.data)
+        } catch(err) {
+            console.log(err.message)
+        }
+
+    }
 
     //payingfunction
     async function handleDeposit() {
@@ -28,6 +47,9 @@ export default function Invest({ auth }) {
             const tx = await contract.deposit({
                 value: ethers.parseEther(deposit)
             })
+             
+            await postTransaction()
+            alert("good dep")
 
         } catch(error) {
             console.error("Error depositing:", error);
@@ -36,21 +58,6 @@ export default function Invest({ auth }) {
     }
 
 
-    //storeTransaction
-    const postTransaction = async() => {
-
-        try{
-            const response = await axios.post('http://company.test/api/storeTransaction', {
-                walletAddress: walletAddress,
-                amount: deposit,
-                user_id: auth.user().id
-            })
-            
-        } catch(err) {
-            console.log(err.message)
-        }
-
-    }
 
     async function connectWallet(){
 
@@ -76,9 +83,17 @@ export default function Invest({ auth }) {
           }
       
         
+          const contractAddres = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+          const contractABI = abi.abi
+
+          const contract = new ethers.Contract(
+            contractAddres, 
+            contractABI, 
+            signer
+          )
 
           setState({provider,signer,contract});
-          console.log(contract)
+          console.log("contract", contract)
          /* localStorage.setItem("connected", true);
           localStorage.setItem("walletAddress", walletAddress);
        */
