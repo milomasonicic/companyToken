@@ -7,6 +7,7 @@ import Balance from '@/Components/Balance'
 import Wallet from '@/Components/Wallet'
 import axios from 'axios';
 
+
 export default function Invest({ auth }) {
 
     const [connected, setConnected] = useState(false)
@@ -127,7 +128,7 @@ export default function Invest({ auth }) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="w-[90%] flex flex-col items-center  mx-auto bg-white  
                     shadow-md
-                    dark:bg-gray-600 overflow-hidden shadow-sm sm:rounded-lg h-[460px]">
+                    dark:bg-gray-600 overflow-hidden shadow-sm sm:rounded-lg h-[420px] md:h-[360px]">
                     <div className=' w-full h-[60%]'>
                         { connected ?
                         <Wallet adr={walletAddress}></Wallet>

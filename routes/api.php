@@ -21,4 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+//storeTransaction
 Route::post('/storeTransaction', [TransactionController::class, "store"])->name("transaction.store");
+
+//getTransactions-no older than 24 hours
+Route::get('/recent', [TransactionController::class, "getRecentTransactions"]);
