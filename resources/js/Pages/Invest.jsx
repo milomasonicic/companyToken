@@ -51,9 +51,9 @@ export default function Invest({ auth }) {
             /*await postTransaction()
             alert("good dep")*/
             await axios.post('http://company.test/api/storeTransaction', {
-                walletAdress: "milo11",
-                amount: 2,
-                user_id: 1
+                walletAdress: walletAddress,
+                amount: deposit,
+                user_id: auth.user.id
             })
 
         } catch(error) {
