@@ -24,7 +24,7 @@ export default function Invest({ auth }) {
     })
 
     //storeTransaction
-    const postTransaction = async() => {
+    /*const postTransaction = async() => {
 
         try{
             const response = await axios.post('http://company.test/api/storeTransaction', {
@@ -38,7 +38,7 @@ export default function Invest({ auth }) {
             console.log(err.message)
         }
 
-    }
+    }*/
 
     //payingfunction
     async function handleDeposit() {
@@ -48,8 +48,13 @@ export default function Invest({ auth }) {
                 value: ethers.parseEther(deposit)
             })
              
-            await postTransaction()
-            alert("good dep")
+            /*await postTransaction()
+            alert("good dep")*/
+            await axios.post('http://company.test/api/storeTransaction', {
+                walletAdress: "milo11",
+                amount: 2,
+                user_id: 1
+            })
 
         } catch(error) {
             console.error("Error depositing:", error);
