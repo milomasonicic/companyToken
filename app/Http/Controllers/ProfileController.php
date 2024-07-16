@@ -81,4 +81,16 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    //show All Investors
+    public function all() {
+
+        $users = User::all();
+        return response()->json($users);
+    }
+
+    //
+    public function yourPage(){
+        return Inertia::render('YourPage');
+    }
 }

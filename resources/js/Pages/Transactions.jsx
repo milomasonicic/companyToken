@@ -32,7 +32,7 @@ export default function Transactions(){
                         </div>
                     ))
             ): (
-               "No transactions" 
+               "No transactions in last 24 hours." 
             )}
 
 

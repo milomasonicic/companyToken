@@ -26,3 +26,8 @@ Route::post('/storeTransaction', [TransactionController::class, "store"])->name(
 
 //getTransactions-no older than 24 hours
 Route::get('/recent', [TransactionController::class, "getRecentTransactions"]);
+
+//userTranasaction
+Route::get('/your/{id}', [TransactionController::class, "userTransactions"]);
+
+Route::get( '/users', [ProfileController::class, "all"]);

@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'addImage'])->name('profile.addImage');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('/yourPage', [ProfileController::class, 'yourPage'])->name('profile.yourpage');
+
     Route::get('/invest', [InvestContorller::class, 'index'])->name('invest.index');
     Route::get('/partners', [PartnersController::class, 'index'])->name('partners.index');
 });

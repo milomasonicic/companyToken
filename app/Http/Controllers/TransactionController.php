@@ -22,25 +22,38 @@ class TransactionController extends Controller
 
         $now = Carbon::now();
 
-        $yesterday = $now->subDay();
+        $yesterday = (clone $now)->subDay();
        
-        $transactions = Transaction::where('created_at', '>=', 
+        $transactions = Transaction::where('created_at', '>', 
         $yesterday)->with('user')
         ->orderBy('created_at', 'desc')
-        ->get(); 
+        ->paginate(10); 
 
         $formattedTransactions = $transactions->map(function ($transaction) {
             $createdAt = Carbon::parse($transaction->created_at);
 
-            // Primeri formata: "pre nekoliko minuta", "pre sat vremena", "10:30"
             $formattedDate = $createdAt->format('H:i');
 
-            // Dodavanje formatiranog polja u objekat transakcije
             $transaction->formatted_created_at = $formattedDate;
 
             return $transaction;
         });
 
+        return response()->json($formattedTransactions);
+    }
+
+    public function userTransactions($id) {
+
+        $transactions = Transaction::where('user_id', $id)->get();
+        $formattedTransactions = $transactions->map(function ($transaction) {
+            $createdAt = Carbon::parse($transaction->created_at);
+
+            $formattedDate = $createdAt->format('H:i');
+
+            $transaction->formatted_created_at = $formattedDate;
+
+            return $transaction;
+        });
         return response()->json($formattedTransactions);
     }
 }
