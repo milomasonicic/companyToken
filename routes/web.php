@@ -7,6 +7,7 @@ use App\Http\Controllers\InvestContorller;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PartnersController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/invest', [InvestContorller::class, 'index'])->name('invest.index');
     Route::get('/partners', [PartnersController::class, 'index'])->name('partners.index');
+
+    //hiddent mint route
+    Route::get('/mint', [TransactionController::class, 'mintPage'])->name('mintToken');
 });
 
 require __DIR__.'/auth.php';

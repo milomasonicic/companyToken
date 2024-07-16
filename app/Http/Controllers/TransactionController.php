@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use Inertia\Inertia;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
 class TransactionController extends Controller
 {
@@ -48,7 +49,7 @@ class TransactionController extends Controller
         $formattedTransactions = $transactions->map(function ($transaction) {
             $createdAt = Carbon::parse($transaction->created_at);
 
-            $formattedDate = $createdAt->format('H:i');
+            $formattedDate = $createdAt->format('Y-m-d');
 
             $transaction->formatted_created_at = $formattedDate;
 
@@ -56,4 +57,11 @@ class TransactionController extends Controller
         });
         return response()->json($formattedTransactions);
     }
+
+    //mintPage
+
+    public function mintPage(){
+
+        return Inertia::render('Mint');
+    } 
 }
