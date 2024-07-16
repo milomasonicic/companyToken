@@ -16,7 +16,7 @@ contract ShareToken is ERC20, Ownable {
 
     constructor(uint256 initialSupply, uint256 initialPrice) ERC20("ShareToken", "SBT") Ownable(msg.sender)  {
     tokenPrice = initialPrice;
-    _mint(msg.sender, initialSupply); // changed from msg.sender to _msgSender()
+    _mint(_msgSender(), initialSupply); // changed from msg.sender to _msgSender()
 }
     
     function deposit() external payable {
