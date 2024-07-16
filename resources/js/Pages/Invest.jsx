@@ -126,6 +126,7 @@ export default function Invest({ auth }) {
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                
                     <div className="w-[90%] flex flex-col items-center  mx-auto bg-white  
                     shadow-md
                     dark:bg-gray-600 overflow-hidden shadow-sm sm:rounded-lg h-[420px] md:h-[360px]">
@@ -135,6 +136,7 @@ export default function Invest({ auth }) {
                         :
                         <Wallet adr={walletAddress}></Wallet>
                     }
+                    
                     <div>
                         
                         <button type="button"    onClick={connectWallet} class=" ml-2 text-gray-900 mt-3 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
