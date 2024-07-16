@@ -3,15 +3,10 @@ import { Head } from '@inertiajs/react';
 import { useState, useEffect, useRef, useTransition } from 'react';
 import { ethers, formatUnits } from "ethers";
 import Balance from '@/Components/Balance'
-import WalletMint from '@/Components/WalletMint'
-
+import Wallet from '@/Components/Wallet'
 import axios from 'axios';
 import Transactions from './Transactions';
 import abi from "./contract/ShareToken.json"
-
-//gradietn
-// dark:eth-card 
-//eth-card-light
 
 //mint
 //0x5FbDB2315678afecb367f032d93F642f64180aa3 - adres
@@ -31,6 +26,23 @@ export default function Mint({auth}){
         signer: null,
         contract: null
     })
+
+    //storeTransaction
+    /*const postTransaction = async() => {
+
+        try{
+            const response = await axios.post('http://company.test/api/storeTransaction', {
+                walletAddress: "kfkf",
+                amount: 11,
+                user_id: 1
+            })
+            
+            console.log(response.data)
+        } catch(err) {
+            console.log(err.message)
+        }
+
+    }*/
 
     //payingfunction
     async function handleDeposit() {
@@ -104,17 +116,17 @@ export default function Mint({auth}){
             localStorage.removeItem("walletAddress");
             */
         }
-        }
+
+
+    }
         async function total(){
             try{
                 const {contract} = state
-                console.log(contract)
-
-                const tx = await contract.tokenPrice()
+                const tx = await contract.totalDeposit()
                 console.log(tx)
 
-            }catch(error) {
-                console.error("Error total:", error);
+            }catch{
+
             }
         }
 
@@ -129,19 +141,16 @@ export default function Mint({auth}){
         > 
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
+
             <h1 className='text-white text-center font-extrabold my-4'> Mint Tokens</h1> 
-                 <div className="w-[90%] 
-                  mx-auto bg-red-300  
+        <div className="w-[90%] flex flex-col items-center  mx-auto bg-white  
                     shadow-md
-                    eth-card-mint
-                    dark:eth-card-mintdark
-                     overflow-hidden shadow-sm sm:rounded-lg h-[420px] md:h-[360px]">
-                    <div className=' w-full h-[100%]'>
-                       
+                    dark:bg-gray-600 overflow-hidden shadow-sm sm:rounded-lg h-[420px] md:h-[360px]">
+                    <div className=' w-full h-[60%]'>
                         { connected ?
-                        <WalletMint adr={walletAddress}></WalletMint>
+                        <Wallet adr={walletAddress}></Wallet>
                         :
-                        <WalletMint adr={walletAddress}></WalletMint>
+                        <Wallet adr={walletAddress}></Wallet>
                     }
                     
                     <div>
