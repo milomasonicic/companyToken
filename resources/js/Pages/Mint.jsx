@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useTransition } from 'react';
 import { ethers, formatUnits } from "ethers";
 import WalletMint from '@/Components/WalletMint'
 import MintBox from '@/Components/MintBox';
-import abi from "./contract/ShareToken.json"
+import abi from "./contract/ShareStocks.json"
 
 //gradietn
 // dark:eth-card 
@@ -40,6 +40,15 @@ export default function Mint({auth}){
             const {contract} = state
             //const newPriceStateNumber = Number(newPriceState)
             const tx = await contract.setTokenPrice(newPriceState)
+          
+
+
+            await axios.post('http://company.test/api/newprice', {
+                tokenvalue: newPriceState,
+            })
+
+            alert("Token Price Changed")
+            window.location.reload()
 
         } catch(error) {
             console.error("Error depositing:", error);

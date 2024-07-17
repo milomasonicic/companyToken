@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
-import abi from "./contract/Invest.json"
+import abi from "./contract/ShareStocks.json"
 import { useState, useEffect, useRef, useTransition } from 'react';
 import { ethers, formatUnits } from "ethers";
 import Balance from '@/Components/Balance'
@@ -23,47 +23,6 @@ export default function Invest({ auth }) {
         signer: null,
         contract: null
     })
-
-    //storeTransaction
-    /*const postTransaction = async() => {
-
-        try{
-            const response = await axios.post('http://company.test/api/storeTransaction', {
-                walletAddress: "kfkf",
-                amount: 11,
-                user_id: 1
-            })
-            
-            console.log(response.data)
-        } catch(err) {
-            console.log(err.message)
-        }
-
-    }*/
-
-    //payingfunction
-    async function handleDeposit() {
-        try{
-            const {contract} = state
-            const tx = await contract.deposit({
-                value: ethers.parseEther(deposit)
-            })
-             
-            /*await postTransaction()
-            alert("good dep")*/
-            await axios.post('http://company.test/api/storeTransaction', {
-                walletAdress: walletAddress,
-                amount: deposit,
-                user_id: auth.user.id
-            })
-
-        } catch(error) {
-            console.error("Error depositing:", error);
-        }
-
-    }
-
-
 
     async function connectWallet(){
 
@@ -89,7 +48,7 @@ export default function Invest({ auth }) {
           }
       
         
-          const contractAddres = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+          const contractAddres = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
           const contractABI = abi.abi
 
           const contract = new ethers.Contract(
@@ -100,21 +59,42 @@ export default function Invest({ auth }) {
 
           setState({provider,signer,contract});
           console.log("contract", contract)
-         /* localStorage.setItem("connected", true);
-          localStorage.setItem("walletAddress", walletAddress);
-       */
 
         } else{
             setConnected(false)
             setWalletAdress(" ")
 
-               // Clear saved wallet data from local storage
-            /*localStorage.removeItem("connected");
-            localStorage.removeItem("walletAddress");
-            */
         }
     }
-  
+
+
+     //payingfunction
+     async function handleDeposit() {
+        try{
+            const {contract} = state
+             
+            const tx = await contract.deposit({
+                value: ethers.parseEther(deposit)
+            })
+
+            const www = await contract.balanceOf(walletAddress)
+            console.log(www, "poslije")    
+               
+            await axios.post('http://company.test/api/storeTransaction', {
+                walletAdress: walletAddress,
+                amount: deposit,
+                user_id: auth.user.id
+            })
+
+            alert("Success");
+            //window.location.reload();
+
+        } catch(error) {
+            console.error("Error depositing:", error);
+        }
+
+    }
+
 
 
     return (
@@ -181,44 +161,3 @@ export default function Invest({ auth }) {
         </AuthenticatedLayout>
     );
 }
-
-/*
-  const [deposit, setDeposit] = useState()
-
-    const handleDeposit = () => {
-
-    }
-        */
-
-    /*
-
-
-<div className="p-6 text-gray-900 dark:text-gray-100">
-                        <div
-                            className="w-[100%] md:w-[90%] flex flex-col md:flex-row
-                            mx-auto 
-                            bg-gradient-to-r from-indigo-50 via-stone-50 via-neutral-50 via-stone-50 to-indigo-50
-                            h-[180px]
-                            md:h-[120px]
-                            flex items-center 
-                            justify-center
-                            rounded-b-2xl
-                            "
-                        >
-                        <input type="text"
-                        placeholder="Enter amount"
-                        className="p-4 mr-2 ml-2 w-[190px] md:w-[240px]"
-                        value={deposit}
-                        onChange = {(e) => setDeposit(e.target.value)}
-                        
-                        />
-                        <button 
-                        class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-4 text-center me-2 mb-2 w-[190px] md:w-[240px] mt-4 md:mt-0 "
-                        onClick={handleDeposit}> Deposit</button>
-
-                      </div>
-                        </div>
-
-
-
-    */

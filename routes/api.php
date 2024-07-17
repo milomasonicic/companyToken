@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PriceController;
+use App\Http\Controllers\StockController;
 use App\Http\Controllers\TransactionController;
 
 /*
@@ -31,3 +33,6 @@ Route::get('/recent', [TransactionController::class, "getRecentTransactions"]);
 Route::get('/your/{id}', [TransactionController::class, "userTransactions"]);
 
 Route::get( '/users', [ProfileController::class, "all"]);
+
+//changing token value
+Route::post( '/newprice', [PriceController::class, "store"]);

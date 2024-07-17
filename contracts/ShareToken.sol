@@ -8,7 +8,7 @@ pragma solidity ^0.8.24;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract ShareToken is ERC20, Ownable {
+contract ShareStocks is ERC20, Ownable {
 
     uint256 public totalDeposit;
 
@@ -33,11 +33,11 @@ contract ShareToken is ERC20, Ownable {
     function setTokenPrice(uint256 newPrice) public {
         tokenPrice = newPrice;
     }
+
+    //getBalance
+     function getBalance(address account) public view returns (uint256) {
+        return balanceOf(account);
+    }
 }
-
-
-
-
-
 
 
