@@ -1,10 +1,10 @@
-export default function MintBox({tokenPriceValue}){
+export default function MintBox({tokenPriceValue, tonekshare, depositethersam}){
 
     return(
         <div className='w-[70%] mx-auto flex justify-between p-6'>
 
         <div className='w-[150px] h-[100px] '>  
-            <div className="h-[30%] border-b-4 border-blue-500"> {tokenPriceValue} </div>
+            <div className="h-[30%] border-b-4 border-blue-500"> {tokenPriceValue} ETH </div>
             <div className="h-[70%] "> 
                 <h1 className="text-gray-900  ">
                 Token Price
@@ -14,7 +14,7 @@ export default function MintBox({tokenPriceValue}){
 
 
         <div className='w-[150px] h-[100px] '>  
-            <div className="h-[30%] border-b-4 border-blue-500"> Deposit in ETH </div>
+            <div className="h-[30%] border-b-4 border-blue-500"> {depositethersam} ETH </div>
             <div className="h-[70%] "> 
                 <h1 className="text-gray-900  ">
                 Token Price
@@ -24,7 +24,7 @@ export default function MintBox({tokenPriceValue}){
 
 
         <div className='w-[150px] h-[100px] '>  
-            <div className="h-[30%] border-b-4 border-blue-500"> Share Token Amount </div>
+            <div className="h-[30%] border-b-4 border-blue-500"> {tonekshare}SHW </div>
             <div className="h-[70%] "> 
                 <h1 className="text-gray-900  ">
                 Share Token Amount

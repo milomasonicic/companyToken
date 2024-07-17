@@ -25,10 +25,12 @@ export default function Mint({auth}){
    const [newPriceState, setNewPriceState] = useState()
     //token Price
     const [tokenPrice, setTokenPrice] = useState("")
+    //share
+    const [sharetoken, setsupplyShare] = useState()
     
     const [walletAddress, setWalletAdress] = useState("")
-    const [balance, setBalance] = useState("")
-    const balanceRef = useRef("")
+    const [depETH, setdepETH] = useState("")
+ 
     
     const [state, setState] = useState({
         provider: null,
@@ -69,7 +71,7 @@ export default function Mint({auth}){
             setConnected(true)
             setWalletAdress(walletAddress)
             console.log("consl", walletAddress)
-
+            /*
             if(walletAddress !== null){
               const balance1 = await provider.getBalance(walletAddress)
               
@@ -78,7 +80,7 @@ export default function Mint({auth}){
               console.log("balnace", showBalance)
 
               balanceRef.current = showBalance
-          }
+          }*/
       
         
           const contractAddres = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
@@ -94,30 +96,25 @@ export default function Mint({auth}){
           console.log("contract", contract)
 
           const tokenPriceContract = await contract.tokenPrice()
-          console.log(tokenPriceContract, "price iz conncest wallet fukcije")
+      
           const tokenPriceString = tokenPriceContract.toString();
           setTokenPrice(tokenPriceString)
+
+          const depositInETH = await contract.totalDeposit()
+          const depAmoutnString = depositInETH.toString();
+          
+          setdepETH(depAmoutnString)
+
+          const totalSupply = await contract.totalSupply()
+          const totalSupplyString = totalSupply.toString();
+          setsupplyShare(totalSupplyString)
 
         } else{
             setConnected(false)
             setWalletAdress(" ")
         }
         }
-        async function tokenvalue(){
-            try{
-                const {contract} = state
-                console.log(contract)
-
-                const tokenPriceContract = await contract.tokenPrice()
-                console.log(tokenPriceContract, "price")
-                const tokenPriceString = tokenPriceContract.toString();
-                setTokenPrice(tokenPriceString)
-            
-
-            }catch(error) {
-                console.error("Error total:", error);
-            }
-        }
+    
 
         
 
@@ -150,7 +147,7 @@ export default function Mint({auth}){
                          </button>
                     </div>
 
-                    <MintBox tokenPriceValue={tokenPrice}></MintBox>
+                    <MintBox tokenPriceValue={tokenPrice} depositethersam={depETH} tonekshare={sharetoken}></MintBox>
 
                     <div className='flex flex-col gap-4 items-center justify-center mx-auto'>
                     <div>
