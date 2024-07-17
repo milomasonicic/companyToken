@@ -82,27 +82,27 @@ background: radial-gradient(circle at 50% 50%, #de0a9b, #00d274, #1e293b, #37415
     }
 
     .eth-card-mint {
-      background-color:#fcfcfc;
+      background-color:#ffffff;
       background-image: 
         radial-gradient(at 83% 67%, rgb(252, 254, 252) 0, transparent 78%), 
         radial-gradient(at 67% 20%, rgb(243, 242, 242) 0, transparent 99%), 
-        radial-gradient(at 88% 35%, hsla(222,81%,65%,1) 0, transparent 90%), 
+        radial-gradient(at 88% 35%, rgb(230, 238, 255) 0, transparent 90%), 
         radial-gradient(at 31% 91%, rgb(223, 221, 221) 0, transparent 82%), 
-        radial-gradient(at 7% 13%, rgb(255, 39, 125) 0, transparent 99%), 
+        radial-gradient(at 7% 13%, rgb(255, 225, 237) 0, transparent 99%), 
         radial-gradient(at 74% 89%, rgb(255, 254, 254) 0, transparent 81%), 
         radial-gradient(at 53% 75%, rgb(248, 251, 251) 0, transparent 95%);
     }
 
     .eth-card-mintdark {
-      background-color:#131313;
+      background-color:#ffffff;
       background-image: 
-        radial-gradient(at 83% 67%, rgb(57, 108, 248) 0, transparent 98%), 
-        radial-gradient(at 67% 20%, rgb(38, 118, 247) 0, transparent 99%), 
-        radial-gradient(at 88% 35%, hsla(222,81%,65%,1) 0, transparent 90%), 
-        radial-gradient(at 31% 91%, rgb(32, 23, 23) 0, transparent 82%), 
-        radial-gradient(at 88% 35%, hsla(222,81%,65%,1) 0, transparent 90%), 
-        radial-gradient(at 88% 35%, hsla(222,81%,65%,1) 0, transparent 90%), 
-        radial-gradient(at 53% 75%, rgb(70, 175, 255) 0, transparent 95%);
+      radial-gradient(at 83% 67%, rgb(252, 254, 252) 0, transparent 78%), 
+      radial-gradient(at 67% 20%, rgb(243, 242, 242) 0, transparent 99%), 
+      radial-gradient(at 88% 35%, rgb(255, 255, 255) 0, transparent 90%), 
+      radial-gradient(at 31% 91%, rgb(223, 221, 221) 0, transparent 82%), 
+      radial-gradient(at 7% 13%, rgb(255, 225, 237) 0, transparent 99%), 
+      radial-gradient(at 74% 89%, rgb(255, 254, 254) 0, transparent 81%), 
+      radial-gradient(at 53% 75%, rgb(248, 251, 251) 0, transparent 95%);
     }
 
     .eth-card-light {

@@ -9,7 +9,8 @@ export default function WalletMint({adr}){
         items-start flex-col 
            w-full 
            h-[125px]
-        bg-transparent
+        bg-teal-400
+        dark:bg-violet-400
         ">
             <div className="flex justify-between flex-col w-full h-full">
               <div className="flex justify-between items-start">

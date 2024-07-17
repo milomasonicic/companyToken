@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useTransition } from 'react';
 import { ethers, formatUnits } from "ethers";
 import Balance from '@/Components/Balance'
 import WalletMint from '@/Components/WalletMint'
+import MintBox from '@/Components/MintBox';
 
 import axios from 'axios';
 import Transactions from './Transactions';
@@ -21,6 +22,9 @@ export default function Mint({auth}){
     const [connected, setConnected] = useState(false)
 
     const [deposit, setDeposit] = useState()
+
+    //token Price
+    const [tokenPrice, setTokenPrice] = useState("")
     
     const [walletAddress, setWalletAdress] = useState("")
     const [balance, setBalance] = useState("")
@@ -110,8 +114,11 @@ export default function Mint({auth}){
                 const {contract} = state
                 console.log(contract)
 
-                const tx = await contract.tokenPrice()
-                console.log(tx)
+                const tokenPriceContract = await contract.tokenPrice()
+                console.log(tokenPriceContract, "price")
+                const tokenPriceString = tokenPriceContract.toString();
+                setTokenPrice(tokenPriceString)
+            
 
             }catch(error) {
                 console.error("Error total:", error);
@@ -128,14 +135,13 @@ export default function Mint({auth}){
             header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Admin</h2>}
         > 
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-            <h1 className='text-white text-center font-extrabold my-4'> Mint Tokens</h1> 
+               
                  <div className="w-[90%] 
                   mx-auto bg-red-300  
                     shadow-md
                     eth-card-mint
                     dark:eth-card-mintdark
-                     overflow-hidden shadow-sm sm:rounded-lg h-[420px] md:h-[360px]">
+                     overflow-hidden shadow-sm sm:rounded-lg h-[520px] md:h-[580px]">
                     <div className=' w-full h-[100%]'>
                        
                         { connected ?
@@ -151,20 +157,25 @@ export default function Mint({auth}){
                              {connected ? "Disconnect MetaMask": "Connect with MetaMask"}  
                          </button>
                     </div>
-                    </div>   
 
-                    <div className='flex flex-col md:flex-row gap-4  '>
-                        <input type="text"
+                    <MintBox></MintBox>
+
+                    <div className='flex flex-col gap-4 items-center justify-center mx-auto'>
+                    <div>
+                        <h1 className='font-extrabold'>Contoroll Token Price</h1>
+                    </div>
+
+                    <div >
+                    <input type="text"
                             placeholder="Enter amount"
-                            class="bg-gray-50  border border-gray-300 
+                            class="bg-gray-50 mt-5 mb-4 border border-gray-300 
                             text-gray-900 text-sm rounded-lg 
                             focus:ring-blue-500 focus:border-blue-500 
                             block h-[55px] w-[215px] md:w-[240px] p-2.5 
                             dark:bg-gray-700 dark:border-gray-600 
                             dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            value={deposit}
-                            onChange = {(e) => setDeposit(e.target.value)}
+                           
                             
                             />
                            <button 
@@ -176,9 +187,14 @@ export default function Mint({auth}){
                                 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 
                                 font-medium rounded-lg text-sm px-5 py-4 text-center 
                                 me-2 mb-2 w-[210px] md:w-[240px] mt-4 md:mt-0 "
-                                 onClick={handleDeposit}> Deposit
+                                > Deposit
                             </button>  
+
                     </div>
+                    </div>
+                    </div>   
+
+                
 
                     </div>
         </div>
@@ -205,6 +221,14 @@ export default function Mint({auth}){
     }
 
 
+
+       <div className='w-[300px] h-[100px] bg-green-100'>
+            {connected ? (
+                <h1 className='text-red-800'> Price{tokenPrice}</h1>
+            ):(
+                <h1 className='text-red-800'>milo</h1>    
+                        )}
+            </div>
 
 
 */
