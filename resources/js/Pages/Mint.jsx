@@ -21,8 +21,8 @@ export default function Mint({auth}){
     
     const [connected, setConnected] = useState(false)
 
-    const [deposit, setDeposit] = useState()
-
+   // const [deposit, setDeposit] = useState()
+   const [newPriceState, setNewPriceState] = useState()
     //token Price
     const [tokenPrice, setTokenPrice] = useState("")
     
@@ -37,15 +37,12 @@ export default function Mint({auth}){
     })
 
     //payingfunction
-    async function handleDeposit() {
+    async function handleValueChange() {
         try{
             const {contract} = state
-            const tx = await contract.deposit({
-                value: ethers.parseEther(deposit)
-            })
+            const newPriceState = Number(newPrice)
+            const tx = await contract.setTokenPrice(newPrice)
              
-            /*await postTransaction()
-            alert("good dep")*/
             await axios.post('http://company.test/api/storeTransaction', {
                 walletAdress: walletAddress,
                 amount: deposit,
@@ -95,21 +92,18 @@ export default function Mint({auth}){
 
           setState({provider,signer,contract});
           console.log("contract", contract)
-         /* localStorage.setItem("connected", true);
-          localStorage.setItem("walletAddress", walletAddress);
-       */
+
+          const tokenPriceContract = await contract.tokenPrice()
+          console.log(tokenPriceContract, "price iz conncest wallet fukcije")
+          const tokenPriceString = tokenPriceContract.toString();
+          setTokenPrice(tokenPriceString)
 
         } else{
             setConnected(false)
             setWalletAdress(" ")
-
-               // Clear saved wallet data from local storage
-            /*localStorage.removeItem("connected");
-            localStorage.removeItem("walletAddress");
-            */
         }
         }
-        async function total(){
+        async function tokenvalue(){
             try{
                 const {contract} = state
                 console.log(contract)
@@ -125,9 +119,7 @@ export default function Mint({auth}){
             }
         }
 
-        useEffect(() => {
-            total()
-        }, [])
+        
 
     return(
         <AuthenticatedLayout
@@ -158,7 +150,7 @@ export default function Mint({auth}){
                          </button>
                     </div>
 
-                    <MintBox></MintBox>
+                    <MintBox tokenPriceValue={tokenPrice}></MintBox>
 
                     <div className='flex flex-col gap-4 items-center justify-center mx-auto'>
                     <div>
@@ -175,7 +167,8 @@ export default function Mint({auth}){
                             dark:bg-gray-700 dark:border-gray-600 
                             dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                           
+                            value={newPriceState}
+                            onChange = {(e) => setNewPriceState(e.target.value)}
                             
                             />
                            <button 
@@ -187,6 +180,7 @@ export default function Mint({auth}){
                                 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 
                                 font-medium rounded-lg text-sm px-5 py-4 text-center 
                                 me-2 mb-2 w-[210px] md:w-[240px] mt-4 md:mt-0 "
+                                onClick={handleValueChange}
                                 > Deposit
                             </button>  
 

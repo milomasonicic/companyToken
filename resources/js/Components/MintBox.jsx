@@ -1,10 +1,10 @@
-export default function MintBox(){
+export default function MintBox({tokenPriceValue}){
 
     return(
         <div className='w-[70%] mx-auto flex justify-between p-6'>
 
         <div className='w-[150px] h-[100px] '>  
-            <div className="h-[30%] border-b-4 border-blue-500"> Share Token Amount </div>
+            <div className="h-[30%] border-b-4 border-blue-500"> {tokenPriceValue} </div>
             <div className="h-[70%] "> 
                 <h1 className="text-gray-900  ">
                 Token Price
