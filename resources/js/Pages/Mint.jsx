@@ -2,12 +2,8 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import { useState, useEffect, useRef, useTransition } from 'react';
 import { ethers, formatUnits } from "ethers";
-import Balance from '@/Components/Balance'
 import WalletMint from '@/Components/WalletMint'
 import MintBox from '@/Components/MintBox';
-
-import axios from 'axios';
-import Transactions from './Transactions';
 import abi from "./contract/ShareToken.json"
 
 //gradietn
@@ -42,14 +38,8 @@ export default function Mint({auth}){
     async function handleValueChange() {
         try{
             const {contract} = state
-            const newPriceState = Number(newPrice)
-            const tx = await contract.setTokenPrice(newPrice)
-             
-            await axios.post('http://company.test/api/storeTransaction', {
-                walletAdress: walletAddress,
-                amount: deposit,
-                user_id: auth.user.id
-            })
+            //const newPriceStateNumber = Number(newPriceState)
+            const tx = await contract.setTokenPrice(newPriceState)
 
         } catch(error) {
             console.error("Error depositing:", error);
