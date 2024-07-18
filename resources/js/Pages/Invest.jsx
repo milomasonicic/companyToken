@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
-import abi from "./contract/ShareStocks.json"
+import abi from "./contract/Stocks.json"
 import { useState, useEffect, useRef, useTransition } from 'react';
 import { ethers, formatUnits } from "ethers";
 import Balance from '@/Components/Balance'
@@ -48,7 +48,7 @@ export default function Invest({ auth }) {
           }
       
         
-          const contractAddres = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+          const contractAddres = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
           const contractABI = abi.abi
 
           const contract = new ethers.Contract(
@@ -73,12 +73,10 @@ export default function Invest({ auth }) {
         try{
             const {contract} = state
              
-            const tx = await contract.deposit({
+            const tx = await contract.deposit(auth.user.id, {
                 value: ethers.parseEther(deposit)
-            })
-
-            const www = await contract.balanceOf(walletAddress)
-            console.log(www, "poslije")    
+            }) 
+  
                
             await axios.post('http://company.test/api/storeTransaction', {
                 walletAdress: walletAddress,
@@ -87,7 +85,7 @@ export default function Invest({ auth }) {
             })
 
             alert("Success");
-            //window.location.reload();
+            window.location.reload();
 
         } catch(error) {
             console.error("Error depositing:", error);

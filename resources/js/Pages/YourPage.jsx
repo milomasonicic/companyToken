@@ -1,14 +1,73 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout"
 import PersonalTransactions from "./PersonalTransactions"
-import { useState } from "react"
+import abi from "./contract/Stocks.json"
+import { useState, useEffect } from "react"
+import { ethers, formatUnits, JsonRpcProvider } from "ethers";
 
 export default function YourPage({auth}){
 
     const [toogle, setToogle] = useState(false)
+    const [percentage, setPercentage] = useState()
+    const [userBalance, setUserBalance] = useState()
 
     async function toogleComponenet(){
         setToogle(prevToggle => !prevToggle)
       }
+
+    /* rpc */   
+    
+    async function getContractInfo(){
+
+        try{
+
+        const provider = new ethers.JsonRpcProvider('http://localhost:8545')
+        const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+        const contractABI = abi.abi
+
+        const contract = new ethers.Contract(contractAddress, contractABI, provider)
+        const totalSupply = await contract.totalSupply()
+        console.log(totalSupply, "total sup iz funkcije")
+
+        const userIdparameter = auth.user.id
+        console.log(userIdparameter)
+
+        const getUserTokenBalance = await contract.getUserTokenBalance(userIdparameter)
+        console.log(getUserTokenBalance)
+
+        const symbol = await contract.symbol()
+        console.log(symbol)
+
+        const formattedtotalSupply = (parseFloat(totalSupply) / Math.pow(10, 18)).toFixed(2);
+
+        const formattedTokenBalance = (parseFloat(getUserTokenBalance) / Math.pow(10, 18)).toFixed(2);
+       
+
+        
+        const userBalance = `${formattedTokenBalance} ${symbol}`
+        setUserBalance(userBalance)
+        
+        console.log(formattedtotalSupply, formattedTokenBalance, "balance")
+
+        const ownerPercentage = (formattedTokenBalance/formattedtotalSupply) * 100;
+        setPercentage(ownerPercentage)
+
+        
+
+        }catch(error){
+            console.error("Error", error)
+        }
+
+    }
+
+   
+    useEffect(()=>{
+        getContractInfo()
+    },[])
+
+
+
+
+    /* rpc */
 
     return(
         <div>
@@ -28,6 +87,14 @@ export default function YourPage({auth}){
 
                     <div className="flex flex-col justify-center"> 
                         <h1 className="text-teal-400 dark:text-yellow-400 font-bold capitalize text-lg pl-4"> {auth.user.name}</h1>
+                    </div>
+                    
+                    <div className="flex flex-col justify-center"> 
+                        <h1 className="text-teal-400 dark:text-yellow-400 font-bold capitalize text-lg pl-4"> {percentage}</h1>
+                    </div>
+                    
+                    <div className="flex flex-col justify-center"> 
+                        <h1 className="text-teal-400 dark:text-yellow-400 font-bold capitalize text-lg pl-4"> {userBalance}</h1>
                     </div>
 
                 </div>
