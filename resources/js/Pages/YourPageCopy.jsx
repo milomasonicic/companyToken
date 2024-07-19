@@ -1,6 +1,5 @@
-
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout"
 import PersonalTransactions from "./PersonalTransactions"
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import abi from "./contract/Stocks.json"
 import { useState, useEffect } from "react"
 import { ethers, formatUnits, JsonRpcProvider } from "ethers";
@@ -94,13 +93,10 @@ export default function YourPage({auth}){
 
     return(
         <div>
-              <AuthenticatedLayout
+            <AuthenticatedLayout
             user={auth.user}
             header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Invest</h2>}
         >
-
-        
-          
             <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
                 <div className="mt-10 w-[90%] flex flex-col  mx-auto bg-white  
@@ -141,10 +137,16 @@ export default function YourPage({auth}){
                     }
                     </button>
                 </div>
-              
+                {toogle ? (
+                    <PersonalTransactions userId={auth.user.id}></PersonalTransactions>
+
+                ): (
+                    " "
+                )}
             </div>
 
-            </AuthenticatedLayout>
+
+        </AuthenticatedLayout>
         </div>
     )
 }

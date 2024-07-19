@@ -1,4 +1,5 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+
+
 import { Head } from '@inertiajs/react';
 import abi from "./contract/Stocks.json"
 import { useState, useEffect, useRef, useTransition } from 'react';
@@ -8,7 +9,7 @@ import Wallet from '@/Components/Wallet'
 import axios from 'axios';
 import Transactions from './Transactions';
 
-export default function Invest({auth}) {
+export default function Invest() {
 
     const [connected, setConnected] = useState(false)
 

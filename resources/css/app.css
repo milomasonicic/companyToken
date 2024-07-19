@@ -94,15 +94,15 @@ background: radial-gradient(circle at 50% 50%, #de0a9b, #00d274, #1e293b, #37415
     }
 
     .eth-card-mintdark {
-      background-color:#ffffff;
+      background-color:#2f2f2f;
       background-image: 
-      radial-gradient(at 83% 67%, rgb(252, 254, 252) 0, transparent 78%), 
-      radial-gradient(at 67% 20%, rgb(243, 242, 242) 0, transparent 99%), 
-      radial-gradient(at 88% 35%, rgb(255, 255, 255) 0, transparent 90%), 
-      radial-gradient(at 31% 91%, rgb(223, 221, 221) 0, transparent 82%), 
-      radial-gradient(at 7% 13%, rgb(255, 225, 237) 0, transparent 99%), 
-      radial-gradient(at 74% 89%, rgb(255, 254, 254) 0, transparent 81%), 
-      radial-gradient(at 53% 75%, rgb(248, 251, 251) 0, transparent 95%);
+      radial-gradient(at 83% 67%, rgb(39, 39, 39) 0, transparent 78%), 
+      radial-gradient(at 67% 20%, rgb(74, 74, 74) 0, transparent 99%), 
+      radial-gradient(at 88% 35%, rgb(19, 19, 19) 0, transparent 90%), 
+      radial-gradient(at 31% 91%, rgb(52, 52, 52) 0, transparent 82%), 
+      radial-gradient(at 7% 13%, rgb(16, 16, 16) 0, transparent 99%), 
+      radial-gradient(at 74% 89%, rgb(0, 0, 0) 0, transparent 81%), 
+      radial-gradient(at 53% 75%, rgb(18, 18, 18) 0, transparent 95%);
     }
 
     .eth-card-light {
