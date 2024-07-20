@@ -97,11 +97,15 @@ export default function InvestForm({userId, userName, handleReload} ){
     return(
         <div>
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                
+
+                <h1 className="text-2xl font-mono text-center mt-10  mb-20 font-bold dark:text-stone-50 text-gray-900"> 
+                    Mint your own tokens
+                </h1>
                 <div className="w-[75%] flex flex-col items-center  mx-auto bg-white  
                 shadow-md
                 dark:bg-gray-600 overflow-hidden shadow-sm sm:rounded-lg h-[420px] md:h-[360px]">
                    
+                     
                
                 <div className=' w-full h-[60%]'>
                     { connected ?
