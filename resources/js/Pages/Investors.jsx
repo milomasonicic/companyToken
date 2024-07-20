@@ -1,6 +1,6 @@
 //import { Chart } from "react-google-charts";
 import React, { PureComponent } from 'react';
-import { BarChart, Bar, ResponsiveContainer, XAxis } from 'recharts';
+import { BarChart, Bar, ResponsiveContainer, XAxis, LabelList } from 'recharts';
 import { useEffect, useState } from "react";
 import axios from "axios"
 
@@ -30,9 +30,30 @@ export default function Investors(){
     useEffect(() => {
         const interval = setInterval(() => {
             fetchInvestorInfo()
-            }, 440);
+            }, 15440);
             return () => clearInterval(interval);
     },[])
+
+
+    const CustomLabel = (props) => {
+
+        const {x, y, width, value} = props
+        return(
+            <text 
+                
+               x={x + width /2} 
+               y={y - 5}
+               fill='#14b8a6'
+               style={{cursor:'pointer'}}
+               textAnchor='middle'
+            className="font-bold text-lg"
+               
+              
+            >
+                {value}
+            </text>
+        )
+    }
 
 
     return(
@@ -41,14 +62,14 @@ export default function Investors(){
 
     <ResponsiveContainer width="100%" height="100%">
         <BarChart width={150} height={40} data={data} barSize={125}>
-          <XAxis dataKey='name'></XAxis>
+              
           <Bar dataKey="percentage" 
           radius={[5, 5, 0, 0]}
-          fill="#8884d8" />
+          fill="#8884d8">
+          <LabelList dataKey="name" content={<CustomLabel/>}></LabelList>
+          </Bar>
         </BarChart>
-      </ResponsiveContainer>
-
-            
+      </ResponsiveContainer>         
 
         </div>
     )

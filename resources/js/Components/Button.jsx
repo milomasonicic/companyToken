@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "@inertiajs/react";
 
-const Button = () => {
+const Button = ({onClick}) => {
   return (
     <div className=" bg-transparent p-4">
-      <DrawOutlineButton to='/partners'>Explore</DrawOutlineButton>
+      <DrawOutlineButton onClick={onClick}>Explore</DrawOutlineButton>
     </div>
   );
 };

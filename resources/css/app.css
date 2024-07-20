@@ -54,6 +54,33 @@ background: radial-gradient(circle at 50% 50%, #de0a9b, #00d274, #1e293b, #37415
         clip-path: polygon(25% 0%, 100% 2%, 75% 90%, 0% 90%);
     }
 
+    /*button */
+
+    .brutal-btn-dark{
+      background-color: transparent;
+      border: 3px solid #a78bfa;
+      margin-top: 12px;
+      padding:8px 30px;
+      font-weight: bold;
+      font-size:18px;
+      position:relative;
+      color:#a78bfa;
+    }
+
+     /*button */
+
+     .brutal-btn-light{
+      background-color: #a78bfa;
+      border: 3px solid #a78bfa;
+      margin-top: 12px;
+      padding:8px 30px;
+      font-weight: bold;
+      font-size:18px;
+      position:relative;
+      color: whitesmoke;
+      
+    }
+
     .bg-radial-irregular {
         background:  linear-gradient(180deg, #c8d6d2, #91fdff, #ffffff,  #fff53d, #ffffff,  #e700db);
         filter: blur(1px);
