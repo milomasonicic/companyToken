@@ -34,7 +34,13 @@ export default function Dashboard({ auth }) {
         </div>  
             <You userIdparameter={userIdparameter} userName={username}></You>
             <AboutUs></AboutUs>
-            <Investors></Investors>
+            <div className='py-8'>
+                <div>
+                    <h1 className="text-2xl text-center mb-8 mb-10 font-bold dark:text-yellow-400 text-gray-900"> Out Top Investors</h1>
+                </div>
+                <Investors></Investors>
+
+            </div>
             <InvestForm handleReload={handleReload}  userName={username} userId={userIdparameter}></InvestForm>
         
         </AuthenticatedLayout>

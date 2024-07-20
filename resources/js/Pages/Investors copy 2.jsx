@@ -1,6 +1,4 @@
-//import { Chart } from "react-google-charts";
-import React, { PureComponent } from 'react';
-import { BarChart, Bar, ResponsiveContainer, XAxis } from 'recharts';
+import { Chart } from "react-google-charts";
 import { useEffect, useState } from "react";
 import axios from "axios"
 
@@ -8,13 +6,13 @@ export default function Investors(){
 
     const[dataArey, setdataArey] = useState([])
 
-    const data = dataArey.map((investor, index ) => ({
-
-        name: investor.user.name,
-        percentage: investor.percentage,
-        fill: index === 0 ? '#1f77b4': index === 1 ? '#1ff70e':'#2ca02c' 
-    }))
-    
+    const data = [
+        ["Top Investor", "Percentage", {role:"style"}],
+        ...dataArey.map((investor, index ) => 
+        [investor.user.name, investor.percentage, 
+        `color: ${index === 0 ? '#1f77b4': index === 1 ? '#1ff70e' : '#2ca02c'  }`]
+        )
+    ]
 
     async function fetchInvestorInfo() {
 
@@ -30,7 +28,7 @@ export default function Investors(){
     useEffect(() => {
         const interval = setInterval(() => {
             fetchInvestorInfo()
-            }, 440);
+            }, 20440);
             return () => clearInterval(interval);
     },[])
 
@@ -39,25 +37,9 @@ export default function Investors(){
 
         <div className="w-[55%] mx-auto h-[450px] dark:bg-gray-700 bg-stone-100">
 
-    <ResponsiveContainer width="100%" height="100%">
-        <BarChart width={150} height={40} data={data} barSize={125}>
-          <XAxis dataKey='name'></XAxis>
-          <Bar dataKey="percentage" 
-          radius={[5, 5, 0, 0]}
-          fill="#8884d8" />
-        </BarChart>
-      </ResponsiveContainer>
+        <h1>RECHARST IPAK</h1>
 
-            
-
-        </div>
-    )
-
-}
-
-/*
-
-    <Chart
+            <Chart
             width="100%"
             height="100%"
             chartType="ColumnChart"
@@ -77,4 +59,11 @@ export default function Investors(){
                   },
             }}
            
-            >*/
+            >
+
+            </Chart>
+
+        </div>
+    )
+
+}

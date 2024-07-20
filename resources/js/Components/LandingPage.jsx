@@ -1,5 +1,6 @@
 import { Link } from "@inertiajs/react"
 import Button from '@/Components/Button';
+import Card from "@/Components/TransactionsCard";
 
 export default function Landing(){
 
@@ -10,6 +11,11 @@ export default function Landing(){
             dark:text-neutral-50
             "> Let's grow together. </h1>
                 <Button></Button>
+            <div className="mt-20 flex gap-12">
+                <Card></Card>
+                <Card></Card>
+        
+            </div>    
         </div>
    
     

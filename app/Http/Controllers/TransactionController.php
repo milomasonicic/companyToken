@@ -58,6 +58,16 @@ class TransactionController extends Controller
         return response()->json($formattedTransactions);
     }
 
+    //total Transactions
+
+    public function totalTransactions(){
+
+        $transactions = Transaction::all();
+        $numberOfTransactions = $transactions->count();
+
+        return response()->json($numberOfTransactions);
+   }
+
     //mintPage
 
     public function mintPage(){

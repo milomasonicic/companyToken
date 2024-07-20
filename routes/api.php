@@ -40,3 +40,9 @@ Route::post( '/newprice', [PriceController::class, "store"]);
 
 //send percentage
 Route::post( '/percentage', [PercentageController::class, "store"]);
+
+//topOwnes
+Route::get('/top-owners', [PercentageController::class, 'getHigestPercentage']);
+
+//number of transactions
+Route::get('/transactionnumber', [TransactionController::class, 'totalTransactions']);
