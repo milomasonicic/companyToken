@@ -1,6 +1,7 @@
 
 import abi from "./contract/Stocks.json"
 import { useState, useEffect } from "react"
+import ReactTypingEffect from "react-typing-effect";
 import { ethers, formatUnits, JsonRpcProvider } from "ethers";
 
 export default function You({userIdparameter, userName}){
@@ -77,7 +78,7 @@ export default function You({userIdparameter, userName}){
 
 
     return(
-        <div className="max-w-7xl mx-auto sm:px-6 py-4 mb-8 lg:px-8">
+        <div className="max-w-7xl flex h-[300px] mx-auto sm:px-6 py-4 mb-8 lg:px-8">
 
         <div className="mt-10 w-[90%] flex flex-col  mx-auto   
                 
@@ -85,17 +86,49 @@ export default function You({userIdparameter, userName}){
                 <h1 className="text-teal-400 dark:text-violet-400 
                 font-bold capitalize 
                 py-1
-                text-lg pl-4"> Hello <span className="underline dark:text-yellow-400 
-                uppercase font-italic underline-offset-8" > {userName}</span></h1>
+                text-lg pl-4"> Hello <span className="text-2xl text-violet-400 dark:text-yellow-400 
+                italic underline-offset-8" > {userName}</span></h1>
          
-                <h1 className="text-teal-400 
-               
-                font-bold capitalize 
-                dark:text-violet-400 
-                text-lg pl-4"> User Balance: {userBalance}</h1>
+                <div className="ml-4">
+                    <ReactTypingEffect
+                        text={["How can we help you?"]}
+                        speed={100}
+                        eraseSpeed={50}
+                        typingDelay={400}
+                        cursorRenderer={cursor=> <h1 className="text-3xl">{cursor}</h1>}
+
+                        displayTextRenderer={(text, i) =>{
+                            return(
+                                <h1> 
+                                    {text.split('').map((char, i) => {
+                                        return(
+                                            
+                                            <span key={i} className="text-xl 
+                                            text-teal-400 dark:text-violet-400 
+                                            font-bold 
+                                            py-1
+                                            text-lg 
+                                            
+                                            ">
+                                                {char}
+                                            </span>
+
+                                            
+                                        )
+
+                                    })}
+                                </h1>
+                            )
+                        }}
+                    >
+
+                    </ReactTypingEffect>
+
+                </div>
             
 
         </div>
+
         </div>
     )
 }

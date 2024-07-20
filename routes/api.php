@@ -46,3 +46,6 @@ Route::get('/top-owners', [PercentageController::class, 'getHigestPercentage']);
 
 //number of transactions
 Route::get('/transactionnumber', [TransactionController::class, 'totalTransactions']);
+
+//investors
+Route::get('/investors', [TransactionController::class, 'investors']);

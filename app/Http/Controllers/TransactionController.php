@@ -68,6 +68,15 @@ class TransactionController extends Controller
         return response()->json($numberOfTransactions);
    }
 
+   //investors 
+
+   public function investors(){
+
+    $allInvestors = Transaction::distinct('user_id')->count('user_id');
+
+    return response()->json($allInvestors);
+   }
+
     //mintPage
 
     public function mintPage(){

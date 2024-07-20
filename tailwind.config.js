@@ -20,6 +20,8 @@ export default {
             backgroundImage: {
                 'login': "url('/public/loginpage.jpg')",
                 'darklogin': "url('/public/drakLogin.jpg')",
+                'team': "url('/public/team.jpg')",
+                'aboutus': "url('/public/bgUs.webp')",
               
               },
         

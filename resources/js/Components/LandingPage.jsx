@@ -1,6 +1,7 @@
 import { Link } from "@inertiajs/react"
 import Button from '@/Components/Button';
 import Card from "@/Components/TransactionsCard";
+import InvestorCard from "./InvestorsCard";
 
 export default function Landing(){
 
@@ -13,7 +14,7 @@ export default function Landing(){
                 <Button></Button>
             <div className="mt-20 flex gap-12">
                 <Card></Card>
-                <Card></Card>
+                <InvestorCard></InvestorCard>
         
             </div>    
         </div>

@@ -37,7 +37,7 @@ export default function Investors(){
 
     return(
 
-        <div className="w-[55%] mx-auto h-[450px] dark:bg-gray-700 bg-stone-100">
+        <div className="w-[90%] md:w-[55%] mx-auto h-[450px] dark:bg-gray-700 bg-stone-100">
 
     <ResponsiveContainer width="100%" height="100%">
         <BarChart width={150} height={40} data={data} barSize={125}>
