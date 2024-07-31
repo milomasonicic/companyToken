@@ -28,17 +28,6 @@ export default function Authenticated({ user, header, children }) {
                                     Dashboard
                                 </NavLink>
 
-                                <NavLink href={route('invest.index')} active={route().current('invest.index')}>
-                                    Invest
-                                </NavLink>
-
-                                <NavLink href={route('partners.index')} active={route().current('partners.index')}>
-                                    Partners
-                                </NavLink>
-
-                                
-                                
-
                                
                             </div>
                         </div>
@@ -73,7 +62,7 @@ export default function Authenticated({ user, header, children }) {
 
                                     <Dropdown.Content>
                                         <Dropdown.Link href={route('profile.edit')}>Profile</Dropdown.Link>
-                                        <Dropdown.Link href={route('profile.yourpage')}>Your page</Dropdown.Link>
+                                      
                                         
                                         <Dropdown.Link href={route('logout')} method="post" as="button">
                                             Log Out
@@ -116,16 +105,6 @@ export default function Authenticated({ user, header, children }) {
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
                             Dashboard
                         </ResponsiveNavLink>
-
-                        <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
-                            Ownership Structure
-                        </ResponsiveNavLink>
-
-                        <ResponsiveNavLink href={route('invest.index')} active={route().current('invest.index')}>
-                            Invest
-                        </ResponsiveNavLink>
-
-
 
                     </div>
 

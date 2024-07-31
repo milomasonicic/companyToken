@@ -1,3 +1,5 @@
+
+
 export default function AboutUs(){
 
     return(
@@ -9,7 +11,7 @@ export default function AboutUs(){
                 <h1 className="font-mono text-center text-white text-2xl"> What we do?</h1>
             
                 <p className="text-white text-center">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, perspiciatis? </p>
-        
+                
             </div>
             
         </div>

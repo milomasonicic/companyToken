@@ -32,7 +32,13 @@ export default function Transactions(){
                         </div>
                     ))
             ): (
-               "No transactions in last 24 hours." 
+                <p className="mx-auto text-gray-800 text-lg 
+                my-24
+                
+                font-bold text-center
+                dark:text-yellow-400 ">
+                    "No transactions in last 24 hours." 
+                </p>
             )}
 
 

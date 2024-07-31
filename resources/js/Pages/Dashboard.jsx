@@ -5,6 +5,8 @@ import { useRef, useState } from 'react';
 import InvestForm from './InvestForm';
 import Investors from './Investors';
 import AboutUs from './AboutUs';
+import Transactions from './Transactions';
+
 import YourPage from './YourPage';
 import { Head } from '@inertiajs/react';
 import Invest from './Invest';
@@ -37,11 +39,11 @@ export default function Dashboard({ auth }) {
             user={auth.user}
             header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Companies</h2>}
         >
-        <div className="relative z-10 h-[580px]  bg-gradient-to-b from-stone-100 via-neutral-50 vie-zinc-50 to-gray-100  dark:grd" >
+        <div className="relative z-10 h-[780px] md:h-[580px]  bg-gradient-to-b from-stone-100 via-neutral-50 vie-zinc-50 to-gray-100  dark:grd" >
             <Landing handleScroll={handleScrollAboutUs}></Landing>
           
         </div> 
-             
+            <You userIdparameter={userIdparameter} userName={username}></You>
             <div ref={aboutUsRef}>
                 <AboutUs></AboutUs>
             </div>
@@ -54,9 +56,14 @@ export default function Dashboard({ auth }) {
 
                 <InvestForm handleReload={handleReload}  userName={username} userId={userIdparameter}></InvestForm>
             </div>
+
+            <div className='py-10'>
+                <Transactions></Transactions>
+            </div>
         
         </AuthenticatedLayout>
     );
 }
 /*
-<You userIdparameter={userIdparameter} userName={username}></You>*/
+<You userIdparameter={userIdparameter} userName={username}></You>
+*/
