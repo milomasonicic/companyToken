@@ -19,9 +19,14 @@ export default function Transactions(){
     },[])
 
     return(
-        <div className="w-[90%] mx-auto">
+        <div className="w-[70%] mx-auto">
 
-           
+            <h2 className="text-2xl text-center
+            my-14
+            font-extrabold
+            dark:text-yellow-400
+            text-gray-800
+            ">Recent Transactions</h2>
             { state.length > 0 ? (
                     state.map((transaction) => (
                         <div key={transaction.id}>

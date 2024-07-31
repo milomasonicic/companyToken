@@ -42,8 +42,8 @@ export default function Investors(){
             <text 
                 
                x={x + width /2} 
-               y={y - 5}
-               fill='#14b8a6'
+               y={y + 40}
+               fill='#f9fafb'
                style={{cursor:'pointer'}}
                textAnchor='middle'
             className="font-bold text-lg"
@@ -60,11 +60,12 @@ export default function Investors(){
 
         <div className="w-[90%] md:w-[45%] mx-auto h-[450px] bg-transparent">
 
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="100%" height="95%">
         <BarChart width={150} height={40} data={data} barSize={125}>
               
           <Bar dataKey="percentage" 
-          radius={[5, 5, 0, 0]}
+          height={"100px"}
+          radius={[30, 35, 0, 0]}
           fill="#8884d8">
           <LabelList dataKey="name" content={<CustomLabel/>}></LabelList>
           </Bar>
@@ -76,26 +77,3 @@ export default function Investors(){
 
 }
 
-/*
-
-    <Chart
-            width="100%"
-            height="100%"
-            chartType="ColumnChart"
-        
-            data={data}
-            options={{
-                backgroundColor:'transaprent',
-                hAxis: {title: 'Investors'},
-                vAxis: {title: 'Ownership Percentage'},
-                legend: "none",
-                chartArea:{width:'70%'},
-                colors:['#1f77b4', '#ff7f0e', '#2ca02c'],
-                animation: {
-                    startup: true,
-                    easing: "linear",
-                    duration: 1500,
-                  },
-            }}
-           
-            >*/

@@ -6,6 +6,7 @@ import InvestForm from './InvestForm';
 import Investors from './Investors';
 import AboutUs from './AboutUs';
 import Transactions from './Transactions';
+import Footer from './Footer';
 
 import YourPage from './YourPage';
 import { Head } from '@inertiajs/react';
@@ -57,9 +58,11 @@ export default function Dashboard({ auth }) {
                 <InvestForm handleReload={handleReload}  userName={username} userId={userIdparameter}></InvestForm>
             </div>
 
-            <div className='py-10'>
+            <div className='py-5'>
                 <Transactions></Transactions>
             </div>
+
+            <Footer></Footer>
         
         </AuthenticatedLayout>
     );

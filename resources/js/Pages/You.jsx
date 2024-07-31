@@ -76,6 +76,7 @@ export default function You({userIdparameter, userName}){
     },[])
 
 
+  
 
     return(
         <div className="max-w-7xl flex h-[300px] mx-auto sm:px-6 py-4 mb-8 lg:px-8">
@@ -88,7 +89,12 @@ export default function You({userIdparameter, userName}){
                 py-1
                 text-lg pl-4"> Hello <span className="text-2xl text-violet-400 dark:text-yellow-400 
                 italic underline-offset-8" > {userName}</span></h1>
-         
+                
+                <h1 className="pl-4 text-teal-400 dark:text-violet-400 font-bold">
+                   Your Balance: {userBalance}
+                </h1>
+
+             
                 <div className="ml-4">
                     <ReactTypingEffect
                         text={["How can we help you?"]}
@@ -125,7 +131,8 @@ export default function You({userIdparameter, userName}){
                     </ReactTypingEffect>
 
                 </div>
-            
+                
+               
 
         </div>
 
