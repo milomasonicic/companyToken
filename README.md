@@ -1,14 +1,13 @@
 
 start project in the laragon
-php artisan migrate
 
 
 start testing network
 npx hardhat node
 
-npx hardhat ignition deploy ignition/modules/Own.cjs --network localhost
+npx hardhat ignition deploy ignition/modules/Stocks.cjs --network localhost
 
-configure MetaMask wallet
+configure MetaMask wallet for the wallet, account for testing provided by hardhat network
 
 npm install
 npm run dev
